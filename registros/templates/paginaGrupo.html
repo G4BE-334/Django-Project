@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="pt-br">
+
+<head>
+  <title>Pré Cadastro</title>
+  <link rel="shortcut icon" href="{% static '/images/Ativo21.jpg' %}"> 
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '../static//css/group.css' %}" type="text/css">
+</head>
+
+<body>
+
+  <div class="bar-heading"></div>
+  <div class="skill-bars">
+    <div class="bar">
+      <div class="info">
+        <h2>Progresso do Grupo</h2>
+        <h4>Próxima Meta: {{meta}}</h4>
+      </div>
+      <div class="progress-line jquery">
+        <span style="width: {{percentageBar}}%" ></span>
+      </div>
+      <h4>Há {{qtdG}} pessoas no grupo</h4>
+      <h3>O código do seu grupo é: {{codG}} </h3>
+      <h4>Convide seus amigos e concorra a prêmios Cactus!</h4>
+
+    </div>
+    <div class="tabela">
+      <table border="1" style="text-align: center">
+        <colgroup>
+          <col class="orange"> 
+          <col class="black">
+          <col class="snow"> 
+        </colgroup>
+        <tr style="background-color: black; color: snow;">
+          <th>VIDAS</th>
+          <th>LÍDER GANHA</th>
+          <th>GRUPO GANHA (SORTEIO)</th>
+        </tr>
+        <tr>
+          <td>50</td>
+          <td>1 mês de 1 esporte de sua preferência</td>
+          <td>-----------</td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>3 meses de 1 esporte de sua preferência</td>
+          <td>3 sorteios de 1 mês</td>
+        </tr>
+        <tr>
+          <td>1000</td>
+          <td>6 meses de 1 esporte da sua preferência</td>
+          <td>10 sorteios de 1 mês</td>
+        </tr>
+        <tr>
+          <td>5000</td>
+          <td>R$1000,00 de consumação no parque</td>
+          <td>50 sorteios de 1 Day Use</td>
+        </tr>
+        <tr>
+          <td>10000</td>
+          <td>1 ano esporte de sua preferência + R$2000,00 de consumação no parque</td>
+          <td>100 sorteios de 1 Day Use</td>
+        </tr>
+        <tr>
+          <td>50000</td>
+          <td>Pode escolher 3 pessoas do grupo para ganhar 1 ano gratuito de um esporte</td>
+          <td>100 sorteios de 1 Day Use + R$30,00 de consumação em quiosques e/ou bares</td>
+        </tr>
+      </table>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/cactussportspark/" target="_blank">
+        <img src="../static/images/instagram_2.png" width="32" height="32"></a>
+    <a href="https://www.facebook.com/Cactus-Sports-Park-102376741654642" target="_blank">
+      <img src="../static/images/facebook.png" width="32" height="32"></a>
+    <a href="https://www.youtube.com/channel/UCJUqAG5XvrOVFXjrJSNEJTg" target="_blank">
+        <img src="../static/images/youtube.png" width="32" height="32"></a>
+    <a href="https://api.whatsapp.com/send?phone=5585991142999" target="_blank">
+      <img src="../static/images/whatsapp.png" width="32" height="32"></a>
+    <a href="https://www.tiktok.com/@cactusparkoficial?lang=pt-BR" target="_blank">
+        <img src="../static/images/tiktok.png" width="32" height="32"></a>
+    </div>
+  </div>
+  
+  <style>
+    .progress-line.jquery span::after{
+    content: "{{percentageBar}}%";
+  }
+  </style>
+
+
+</body>
+
+</html>

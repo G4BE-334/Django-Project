@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% load registros_filters %}
+{% load static %}
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pré Cadastro</title>
+    <link rel="shortcut icon" href="{% static '/images/Ativo21.jpg' %}">    
+    <link href="{% static '/node_modules/sweetalert2/dist/sweetalert2.css' %}" rel="stylesheet" type = "text/css">
+    <link href="{% static '/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all" type = "text/css">
+    <link href="{% static '/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all" type= "text/css">
+
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i' %}" rel="stylesheet" type= "text/css">
+
+    <link href="{% static '/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all" type= "text/css">
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all" type= "text/css">
+
+    <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'https://code.jquery.com/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js' %}" type="text/javascript"></script>
+
+</head>
+
+<body>
+    
+    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">PRÉ-CADASTRO</h2>
+                    <form name="cadastro" method="POST" id="form" onsubmit="animationClick()">
+                        {%csrf_token%}
+                        <div class="input-group">
+                            <input autocomplete="off" class="input--style-1" type="text" placeholder="Nome Completo*" id="nome" name="nome" required>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <input class="input--style-1" type="email" placeholder="E-mail*" id="email"
+                                            name="email" required>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1 phone-mask" type="text" placeholder="Celular*" id="celular"
+                                        name="celular" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                        <input class="input--style-1" type="text" placeholder="Endereço*" id="endereco"
+                                        name="endereco" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                            <input class="input--style-1 cep-mask" type="text" placeholder="CEP*" id="cep" name="cep"
+                                            maxlength="14" autocomplete="off" required>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <input class="input--style-1 cpf-mask" type="text" placeholder="CPF*" id="cpf" name="cpf"
+                                        maxlength="14" autocomplete="off" required>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                     
+                                    <input class="input--style-1 js-datepicker" type="text" onfocus="(this.type='date')"
+                                        placeholder="Data De Nascimento*" id="data" name="data"
+                                        onblur="(this.type='text')" max="2999-12-31" required>
+                               
+                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                         <select id="sexo" name="sexo" required>
+                                            <option disabled="disabled" selected="selected">Sexo</option>
+                                            <option>Masculino</option>
+                                            <option>Feminino</option>
+                                            <option>Outro</option>
+                                        </select>
+                         
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                            
+                                            {% get_grupos as subsetor %}
+                                            <input list="subsetor" id="grupo" placeholder="Selecione ou Crie Grupo" name="code" maxlength=20 autocapitalize="off"/>
+                                            <datalist id="subsetor" class="group" required>
+                                                {% for s in subsetor %}
+                                                    <option value="{{ s }}">{{s}}</option>
+                                                {% endfor %}
+                                            </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="p-t-20">
+                                <button class="btn btn--radius btn--green" type="submit" id="btn">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h4>----------------- Ou -----------------</h4>
+                    <div class="p-t-20">
+                        <button class="btn btn--radius btn--black" onclick= "location.href='/login';" type="submit" id="btn2">Faça Login</button>
+                    </div>
+                    
+                    </form>
+                    <div class="social">
+                        <a href="https://www.instagram.com/cactussportspark/" target="_blank">
+                            <img src="../static/images/instagram_2.png" width="32" height="32" >
+                        </a>
+                        <a href="https://www.facebook.com/Cactus-Sports-Park-102376741654642" target="_blank">
+                          <img src="../static/images/facebook.png" width="32" height="32">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCJUqAG5XvrOVFXjrJSNEJTg" target="_blank">
+                            <img src="../static/images/youtube.png" width="32" height="32">
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5585991142999" target="_blank">
+                          <img src="../static/images/whatsapp.png" width="32" height="32">
+                        </a>
+                        <a href="https://www.tiktok.com/@cactusparkoficial?lang=pt-BR" target="_blank">
+                            <img src="../static/images/tiktok.png" width="32" height="32">
+                          </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script src="{% static 'node_modules/sweetalert2/dist/sweetalert2.all.min.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'vendor/jquery/jquery.mask.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'js/global.js' %}" type= "text/javascript"></script>
+    <script src="{% static 'js/masks.js' %}" type="text/javascript"></script>
+    
+    
+    <script>
+        function animationClick() {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Seja Bem Vindo ao time Cactus!',
+                showConfirmButton: false,
+                timer:6000
+            })
+
+
+        }
+    </script>
+</body>
+</html>
