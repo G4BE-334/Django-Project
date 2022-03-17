@@ -13,10 +13,10 @@ Django project done with the purpose of being used as a registration form for a 
     . JS
 
 Requirements:
-    - Python 3.7.X
-    - Django 3.1.X
-    - MAMP 4.X
-    - MySQL 5.7.X
+- Python 3.7.X
+- Django 3.1.X
+- MAMP 4.X
+- MySQL 5.7.X
 
 
 Usage:
