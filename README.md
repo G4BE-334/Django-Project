@@ -12,7 +12,7 @@ Django project done with the purpose of being used as a registration form for a 
     . SQLite
     . JS
 
-Requirements:
+# Requirements:
 - Python 3.7.X
 - Django 3.1.X
 - MAMP 4.X
